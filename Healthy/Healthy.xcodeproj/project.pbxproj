@@ -13,6 +13,7 @@
 		82E9062C269A30690046388E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9062B269A30690046388E /* Preview Assets.xcassets */; };
 		82E90635269A30970046388E /* HealthManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E90634269A30970046388E /* HealthManagerStore.swift */; };
 		82E9063A269A33CD0046388E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E90639269A33CD0046388E /* HealthKit.framework */; };
+		82E90640269A39640046388E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E9063F269A39640046388E /* Step.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		82E90634269A30970046388E /* HealthManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManagerStore.swift; sourceTree = "<group>"; };
 		82E90637269A33CD0046388E /* Healthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Healthy.entitlements; sourceTree = "<group>"; };
 		82E90639269A33CD0046388E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		82E9063F269A39640046388E /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +63,9 @@
 			children = (
 				82E90637269A33CD0046388E /* Healthy.entitlements */,
 				82E90624269A30670046388E /* HealthyApp.swift */,
-				82E90626269A30670046388E /* ContentView.swift */,
-				82E90634269A30970046388E /* HealthManagerStore.swift */,
+				82E90644269A396E0046388E /* Views */,
+				82E90642269A39670046388E /* Managers */,
+				82E9063E269A39580046388E /* Models */,
 				82E90628269A30690046388E /* Assets.xcassets */,
 				82E9062D269A30690046388E /* Info.plist */,
 				82E9062A269A30690046388E /* Preview Content */,
@@ -84,6 +87,30 @@
 				82E90639269A33CD0046388E /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82E9063E269A39580046388E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				82E9063F269A39640046388E /* Step.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		82E90642269A39670046388E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				82E90634269A30970046388E /* HealthManagerStore.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		82E90644269A396E0046388E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				82E90626269A30670046388E /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E90627269A30670046388E /* ContentView.swift in Sources */,
+				82E90640269A39640046388E /* Step.swift in Sources */,
 				82E90635269A30970046388E /* HealthManagerStore.swift in Sources */,
 				82E90625269A30670046388E /* HealthyApp.swift in Sources */,
 			);
