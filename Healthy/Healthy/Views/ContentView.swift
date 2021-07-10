@@ -19,17 +19,9 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            List(steps) { step in
-                VStack(alignment: .leading) {
-                Text("Steps: \(step.count)")
-                    .font(Font.title3)
-                    .fontWeight(.bold)
-                Text(step.date, style: .date)
-                    .opacity(0.6)
-                }
-            }
-            .onAppear(perform: initilization)
-            .navigationTitle("Montly Steps")
+            List(steps, rowContent: StepRowView.init)
+                .onAppear(perform: initilization)
+                .navigationTitle("Montly Steps")
             
         }
     }
@@ -40,8 +32,8 @@ struct ContentView: View {
                 if success {
                     healthStore.calculateSteps { statisticsCollection in
                         if let statisticsCollection = statisticsCollection {
-                           updateFromStatistics(statisticsCollection)
-//                            print(statisticsCollection.statistics())
+                            updateFromStatistics(statisticsCollection)
+                            //                            print(statisticsCollection.statistics())
                         }
                     }
                 }
@@ -53,20 +45,45 @@ struct ContentView: View {
     private func updateFromStatistics( _ statisticsCollection: HKStatisticsCollection) {
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: Date())!
         let endDate = Date()
-
+        
         statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
             
-             let count  = statistics.sumQuantity()?.doubleValue(for: .count())
+            let count  = statistics.sumQuantity()?.doubleValue(for: .count())
             
             let step = Step(count: Int(count ?? 0), date: statistics.startDate)
             steps.append(step)
             
         }
+        
+        steps.removeFirst()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+
+struct StepRowView: View {
+    let step: Step
+    var body: some View {
+        HStack {
+            Text("Steps: \(step.count)")
+                .font(.system(.title, design: .rounded))
+                .fontWeight(.bold)
+                
+            Spacer()
+            Text(step.date, style: .date)
+                .font(.system(.body, design: .rounded))
+                .foregroundColor((Color(.systemBackground)).opacity(0.8))
+                .frame(width: 120, height: 30)
+                .background(Color.primary)
+                .cornerRadius(5)
+        }
+        .lineLimit(1)
+        .minimumScaleFactor(0.8)
+        
     }
 }
