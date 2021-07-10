@@ -11,15 +11,27 @@ import HealthKit
 struct ContentView: View {
     private var healthStore: HealthStore?
     
+    @State private var steps: [Step] = []
+    
     init() {
         healthStore = HealthStore()
     }
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            
-            
+        
+        NavigationView {
+            List(steps) { step in
+                VStack(alignment: .leading) {
+                Text("Steps: \(step.count)")
+                    .font(Font.title3)
+                    .fontWeight(.bold)
+                Text(step.date, style: .date)
+                    .opacity(0.6)
+                }
+            }
             .onAppear(perform: initilization)
+            .navigationTitle("Montly Steps")
+            
+        }
     }
     
     private func initilization() {
@@ -28,9 +40,8 @@ struct ContentView: View {
                 if success {
                     healthStore.calculateSteps { statisticsCollection in
                         if let statisticsCollection = statisticsCollection {
-                            // Update UI
-                            
-                            print(statisticsCollection.statistics())
+                           updateFromStatistics(statisticsCollection)
+//                            print(statisticsCollection.statistics())
                         }
                     }
                 }
@@ -47,6 +58,8 @@ struct ContentView: View {
             
              let count  = statistics.sumQuantity()?.doubleValue(for: .count())
             
+            let step = Step(count: Int(count ?? 0), date: statistics.startDate)
+            steps.append(step)
             
         }
     }
