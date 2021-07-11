@@ -7,4 +7,4 @@ An exploration of HealthKit framework
 
 Home View                 
 :-------------------------:
-![](home.png)
+![](home.PNG)
