@@ -54,8 +54,6 @@ struct ContentView: View {
             steps.append(step)
             
         }
-        
-        steps.removeFirst()
     }
 }
 
