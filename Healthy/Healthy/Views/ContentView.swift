@@ -10,8 +10,12 @@ import HealthKit
 
 struct ContentView: View {
     private var healthStore: HealthStore?
+    @State private var showInfoSheet: Bool = false
     
     @State private var steps: [Step] = []
+    
+    @State private var age: Int? = nil
+    @State private var bloodType: HKBloodTypeObject? = nil
     
     init() {
         healthStore = HealthStore()
@@ -19,9 +23,25 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            List(steps, rowContent: StepRowView.init)
-                .onAppear(perform: initilization)
-                .navigationTitle("Montly Steps")
+            List {
+                ForEach(steps, content: StepRowView.init)
+            }
+            .actionSheet(isPresented: $showInfoSheet) {
+                ActionSheet(title: Text("User Information"),
+                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
+                            buttons: [.cancel()])
+            }
+            .onAppear(perform: initilization)
+            .navigationTitle("Montly Steps")
+            .toolbar(content: {
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                    Button(action: {
+                        showInfoSheet.toggle()
+                    }, label: {
+                        Label("Profile", systemImage: "person.circle.fill")
+                    })
+                }
+            })
             
         }
     }
@@ -33,7 +53,11 @@ struct ContentView: View {
                     healthStore.calculateSteps { statisticsCollection in
                         if let statisticsCollection = statisticsCollection {
                             updateFromStatistics(statisticsCollection)
-                            //                            print(statisticsCollection.statistics())
+                            
+                            (age, bloodType) = healthStore.getInfo()
+                            let (age, bloodType) = healthStore.getInfo()
+                            print("The age is \(age)")
+                            print("The blood type is \(bloodType!.bloodType)")
                         }
                     }
                 }
@@ -55,7 +79,7 @@ struct ContentView: View {
         }
         // To Sort them elements from the latest
         steps.reverse()
-
+        
     }
 }
 
@@ -73,7 +97,7 @@ struct StepRowView: View {
             Text("Steps: \(step.count)")
                 .font(.system(.title, design: .rounded))
                 .fontWeight(.bold)
-                
+            
             Spacer()
             Text(step.date, style: .date)
                 .font(.system(.body, design: .rounded))
