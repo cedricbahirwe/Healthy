@@ -52,8 +52,10 @@ struct ContentView: View {
             
             let step = Step(count: Int(count ?? 0), date: statistics.startDate)
             steps.append(step)
-            
         }
+        // To Sort them elements from the latest
+        steps.reverse()
+
     }
 }
 
