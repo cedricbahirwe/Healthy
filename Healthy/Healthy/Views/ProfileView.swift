@@ -9,7 +9,12 @@ import SwiftUI
 import HealthKit
 import CoreMotion
 
+
 struct ProfileView: View {
+    
+    @AppStorage("StepCount", store: UserDefaults(suiteName: groupIdentifier))
+    var stepCount: Int = 0
+    
     var healthStore: HealthStore?
     var pedometerStore: PedoMeterManagerStore?
     @State private var profile: Profile? = Profile.getInformation()
@@ -130,6 +135,7 @@ struct ProfileView: View {
     private func updateUserInterface(data: CMPedometerData) {
         
         steps = data.numberOfSteps.intValue
+        stepCount = data.numberOfSteps.intValue
         
         guard let pedometerDistance = data.distance else { return }
         
