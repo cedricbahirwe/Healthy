@@ -47,8 +47,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Health requires your permission to provide better user experience</string>
+	<string>Healthy requires your permission to provide better user experience</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Health requires your permission to provide better user experience</string>
+	<string>Healthy requires your permission to provide better user experience</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Healthy requires your permission to provide better user experience</string>
 </dict>
 </plist>

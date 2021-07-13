@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		822DCCF9269DDD2E00657B77 /* PedoMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822DCCF8269DDD2E00657B77 /* PedoMeterView.swift */; };
 		82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9B99269DA1F20079F5AE /* ProfileView.swift */; };
 		82CE9BA9269DAAD50079F5AE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9BA8269DAAD50079F5AE /* Profile.swift */; };
 		82CE9BAD269DAB010079F5AE /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9BAC269DAB010079F5AE /* FormRowView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		822DCCF8269DDD2E00657B77 /* PedoMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedoMeterView.swift; sourceTree = "<group>"; };
 		82CE9B99269DA1F20079F5AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82CE9BA8269DAAD50079F5AE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		82CE9BAC269DAB010079F5AE /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				82E90626269A30670046388E /* ContentView.swift */,
 				82CE9B99269DA1F20079F5AE /* ProfileView.swift */,
 				82CE9BAC269DAB010079F5AE /* FormRowView.swift */,
+				822DCCF8269DDD2E00657B77 /* PedoMeterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				82E90627269A30670046388E /* ContentView.swift in Sources */,
 				82E90640269A39640046388E /* Step.swift in Sources */,
+				822DCCF9269DDD2E00657B77 /* PedoMeterView.swift in Sources */,
 				82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */,
 				82CE9BB0269DAD6B0079F5AE /* Extensions.swift in Sources */,
 				82CE9BA9269DAAD50079F5AE /* Profile.swift in Sources */,
