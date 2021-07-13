@@ -4,7 +4,8 @@ An exploration of HealthKit framework
 ### Features:
 
  - Monthly Steps Count
+ - Body Mass, age, Blood Type
 
-Home View                 
-:-------------------------:
-![](home.PNG)
+Home View                 |  Profile View
+:-------------------------:|:-------------------------:
+![](home.png)  |  ![](profile.png)
