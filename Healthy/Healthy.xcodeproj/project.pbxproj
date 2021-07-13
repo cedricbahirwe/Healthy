@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9B99269DA1F20079F5AE /* ProfileView.swift */; };
 		82E90625269A30670046388E /* HealthyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E90624269A30670046388E /* HealthyApp.swift */; };
 		82E90627269A30670046388E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E90626269A30670046388E /* ContentView.swift */; };
 		82E90629269A30690046388E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E90628269A30690046388E /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82CE9B99269DA1F20079F5AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82E90621269A30670046388E /* Healthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Healthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E90624269A30670046388E /* HealthyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthyApp.swift; sourceTree = "<group>"; };
 		82E90626269A30670046388E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				82E90626269A30670046388E /* ContentView.swift */,
+				82CE9B99269DA1F20079F5AE /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				82E90627269A30670046388E /* ContentView.swift in Sources */,
 				82E90640269A39640046388E /* Step.swift in Sources */,
+				82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */,
 				82E90635269A30970046388E /* HealthManagerStore.swift in Sources */,
 				82E90625269A30670046388E /* HealthyApp.swift in Sources */,
 			);
