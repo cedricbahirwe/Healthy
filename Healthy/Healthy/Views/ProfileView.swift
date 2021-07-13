@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct ProfileView: View {
+    var healthStore: HealthStore?
+    
+    @State private var weight: String = ""
     var body: some View {
         Form {
             
@@ -15,10 +19,14 @@ struct ProfileView: View {
             
             FormRowView("Age", text: .constant(""))
             
+            FormRowView("Weight", text: $weight)
             FormRowView("Blood Type", text: .constant(""))
             
             Button(action: {
-                
+                guard let weight = Double(weight) else { return }
+                healthStore!.saveBodyMass(weight: weight) {
+                    print($0)
+                }
             }) {
                 Text("Save")
                     .frame(maxWidth: .infinity)

@@ -37,10 +37,13 @@ class HealthStore {
         let dob = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
         // The blood type
         let bloodType = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!
+        // The body mass
+        let bodyMass = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
         
         
-        let hkTypesToRead: Set<HKObjectType> = [stepType, dob, bloodType]
-        let hkTypesToWrite: Set<HKSampleType> = []
+        
+        let hkTypesToRead: Set<HKObjectType> = [stepType, dob, bloodType, bodyMass]
+        let hkTypesToWrite: Set<HKSampleType> = [bodyMass]
         
         guard let healthStore = healthStore else { return completion(false) }
         
@@ -96,6 +99,7 @@ class HealthStore {
     
     /// Get Infor from HealthKit
     /// - Returns: the age and bloodType of the user
+    
     func getInfo() -> (age: Int?, bloodType: HKBloodTypeObject?) {
         var age: Int?
         var blootype: HKBloodTypeObject?
@@ -110,6 +114,30 @@ class HealthStore {
         } catch { }
         
         return (age, blootype)
+    }
+    
+    
+    
+    /// Save a given weight to HealthKit
+    /// - Parameters:
+    ///   - weight: the weight to be saved in `grams`
+    ///   - completion: a closure that indicates whether the saving operation was successul
+    func saveBodyMass(weight: Double, completion: @escaping(Bool) -> Void) {
+        
+        let today = Date()
+        
+        if let type = HKSampleType.quantityType(forIdentifier: .bodyMass) {
+            let quantity = HKQuantity(unit: .gram(), doubleValue: weight)
+            
+            let sample = HKQuantitySample(type: type,
+                                          quantity: quantity,
+                                          start: today,
+                                          end: today)
+            
+            healthStore?.save(sample, withCompletion: { (success, error) in
+                completion(success)
+            })
+        }
     }
 }
 

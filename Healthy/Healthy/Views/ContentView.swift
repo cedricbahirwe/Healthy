@@ -26,10 +26,13 @@ struct ContentView: View {
             List {
                 ForEach(steps, content: StepRowView.init)
             }
-            .actionSheet(isPresented: $showInfoSheet) {
-                ActionSheet(title: Text("User Information"),
-                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
-                            buttons: [.cancel()])
+//            .actionSheet(isPresented: $showInfoSheet) {
+//                ActionSheet(title: Text("User Information"),
+//                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
+//                            buttons: [.cancel()])
+//            }
+            .fullScreenCover(isPresented: $showInfoSheet) {
+                ProfileView(healthStore: healthStore)
             }
             .onAppear(perform: initilization)
             .navigationTitle("Montly Steps")
