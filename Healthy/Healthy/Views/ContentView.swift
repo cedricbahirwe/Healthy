@@ -14,8 +14,6 @@ struct ContentView: View {
     
     @State private var steps: [Step] = []
     
-    @State private var age: Int? = nil
-    @State private var bloodType: HKBloodTypeObject? = nil
     
     init() {
         healthStore = HealthStore()
@@ -31,7 +29,7 @@ struct ContentView: View {
 //                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
 //                            buttons: [.cancel()])
 //            }
-            .fullScreenCover(isPresented: $showInfoSheet) {
+            .sheet(isPresented: $showInfoSheet) {
                 ProfileView(healthStore: healthStore)
             }
             .onAppear(perform: initilization)
@@ -56,11 +54,6 @@ struct ContentView: View {
                     healthStore.calculateSteps { statisticsCollection in
                         if let statisticsCollection = statisticsCollection {
                             updateFromStatistics(statisticsCollection)
-                            
-                            (age, bloodType) = healthStore.getInfo()
-                            let (age, bloodType) = healthStore.getInfo()
-                            print("The age is \(age)")
-                            print("The blood type is \(bloodType!.bloodType)")
                         }
                     }
                 }

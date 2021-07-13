@@ -5,7 +5,6 @@
 //  Created by Cédric Bahirwe on 10/07/2021.
 //
 
-import Foundation
 import HealthKit
 
 class HealthStore {
@@ -14,10 +13,7 @@ class HealthStore {
     // accessing data, accessing and writing number of steps, etc
     var healthStore: HKHealthStore?
     
-    
     var hkquery: HKStatisticsCollectionQuery?
-    
-    
     
     init() {
         // Check whether HealthKit is available on this device.
@@ -25,9 +21,6 @@ class HealthStore {
             healthStore = HKHealthStore()
         }
     }
-    
-    
-    
     func requestAuthorization(completion: @escaping (Bool) -> Void) {
         
         // Types of data, we're requesting from HealthKit
@@ -66,7 +59,7 @@ class HealthStore {
         // 30 days before the current day
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: Date())
         
-        // anchor date ( Which Time?)
+        // anchor date (Which Time?)
         let anchorDate = Date.mondayAt12AM()
         
         // We want the steps to be calculated daily
@@ -139,29 +132,29 @@ class HealthStore {
             })
         }
     }
-}
-
-extension Date {
-    static func mondayAt12AM() -> Date {
-        Calendar(identifier: .iso8601)
-            .date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
-    }
-}
-
-
-extension HealthKit.HKBloodTypeObject {
-    // Convert a HKBloodType to a human readable format
-    public func readableBloodType() -> String {
-        switch self.bloodType {
-        case .aPositive: return "A+"
-        case .aNegative: return "A-"
-        case .bPositive: return "B+"
-        case .bNegative: return "B-"
-        case .abPositive: return "AB+"
-        case .abNegative: return "AB-"
-        case .oPositive: return "O+"
-        case .oNegative: return "O-"
-        default: return "Unknown"
+    
+    
+    func getBodyMass(completion: @escaping(String) -> Void) {
+        print("up")
+        var weight: String = ""
+        let weightType = HKSampleType.quantityType(forIdentifier: .bodyMass)!
+        let query = HKSampleQuery(sampleType: weightType,
+                                  predicate: nil,
+                                  limit: HKObjectQueryNoLimit,
+                                  sortDescriptors: nil) { (query, results, error) in
+            if let result = results?.last as? HKQuantitySample {
+                print("weight -> \(result.quantity)")
+                DispatchQueue.main.async {
+                    weight = "\(result.quantity)"
+                    completion(weight)
+                }
+            } else {
+                print("We could not retrieve the result \nResults => \(String(describing: results)), error => \(String(describing: error)))")
+            }
+        }
+        
+        if let healthStore = healthStore {
+            healthStore.execute(query)
         }
     }
 }

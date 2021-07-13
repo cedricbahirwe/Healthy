@@ -15,7 +15,10 @@ struct FormRowView: View {
         self.title = title
         _text = text
     }
-    
+    init(_ title: String, text: Binding<String>?) {
+        self.title = title
+        _text = text ?? .constant("")
+    }
     var body: some View {
         HStack {
             Text("\(title):")
