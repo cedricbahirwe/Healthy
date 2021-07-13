@@ -14,13 +14,14 @@ struct ProfileView: View {
     @State private var weight: String = ""
     
     @State private var age: String = ""
-    @State private var name: String = ""
+    @State private var name: String = UIDevice.current.name
     @State private var bloodType: String = ""
     
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         Form {
             FormRowView("Name", text: $name)
+                .onChange(of: name) { profile?.name = $0 }
                 .disabled(true)
             FormRowView("Age", text: $age)
                 .disabled(true)
@@ -33,10 +34,8 @@ struct ProfileView: View {
                 guard let weight = Double(weight) else { return }
                 healthStore!.saveBodyMass(weight: weight) {
                     if $0 {
-                        print("Sawa")
                         profile!.saveInformation()
-                        print("Helllo")
-//                        presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     } else {
                         print("Failed to save the weight")
                     }
@@ -52,37 +51,35 @@ struct ProfileView: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.top)
         }
-        .onAppear() {
-            
-//            print(Profile.getInformation())
-            
-            return 
-
-            guard let healthStore = healthStore else { return }
-            healthStore.getBodyMass { mass in
-                var result = mass
-                result.removeAll(where: { $0.isLetter })
-                weight = result
-
-                
-                let resultInfo = healthStore.getInfo()
-                profile?.age = resultInfo.age ?? 0
-
-                let type = resultInfo.bloodType!.readableBloodType()
-
-                bloodType = type
-                if let age = resultInfo.age {
-                    self.age = String(age)
-                }
-
-                profile = Profile(name: UIDevice.current.name,
-                        age: resultInfo.age ?? 0,
-                        weight: Double(result) ?? 0,
-                        bloodType: resultInfo.bloodType!.readableBloodType())
-            }
-
-        }
+        .onAppear(perform: initializiation)
         .navigationTitle("Profile Settings")
+    }
+    
+    private func initializiation()  {
+        guard let healthStore = healthStore else { return }
+        healthStore.getBodyMass { mass in
+            var result = mass
+            result.removeAll(where: { $0.isLetter })
+            result = result.replacingOccurrences(of: " ", with: "")
+                
+            weight = result
+            
+            
+            let resultInfo = healthStore.getInfo()
+            profile?.age = resultInfo.age ?? 0
+            
+            let type = resultInfo.bloodType!.readableBloodType()
+            
+            bloodType = type
+            if let age = resultInfo.age {
+                self.age = String(age)
+            }
+            
+            profile = Profile(name: UIDevice.current.name,
+                              age: resultInfo.age ?? 0,
+                              weight: Double(result) ?? 0,
+                              bloodType: resultInfo.bloodType!.readableBloodType())
+        }
     }
 }
 
