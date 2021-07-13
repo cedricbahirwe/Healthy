@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		822DCCFC269DEDA300657B77 /* PedometerManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822DCCFB269DEDA300657B77 /* PedometerManagerStore.swift */; };
+		82B9E5AB269E22AE00ED8FC3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B9E5AA269E22AE00ED8FC3 /* WidgetKit.framework */; };
+		82B9E5AD269E22AE00ED8FC3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B9E5AC269E22AE00ED8FC3 /* SwiftUI.framework */; };
+		82B9E5B0269E22AE00ED8FC3 /* HealthyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B9E5AF269E22AE00ED8FC3 /* HealthyWidget.swift */; };
+		82B9E5B2269E22B000ED8FC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B9E5B1269E22B000ED8FC3 /* Assets.xcassets */; };
+		82B9E5B6269E22B000ED8FC3 /* HealthyWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82B9E5A9269E22AE00ED8FC3 /* HealthyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		82B9E5C1269E281A00ED8FC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B9E5C0269E281A00ED8FC3 /* Constants.swift */; };
+		82B9E5C4269E283100ED8FC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B9E5C0269E281A00ED8FC3 /* Constants.swift */; };
 		82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9B99269DA1F20079F5AE /* ProfileView.swift */; };
 		82CE9BA9269DAAD50079F5AE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9BA8269DAAD50079F5AE /* Profile.swift */; };
 		82CE9BAD269DAB010079F5AE /* FormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE9BAC269DAB010079F5AE /* FormRowView.swift */; };
@@ -21,8 +28,40 @@
 		82E90640269A39640046388E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E9063F269A39640046388E /* Step.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		82B9E5B4269E22B000ED8FC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E90619269A30670046388E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82B9E5A8269E22AE00ED8FC3;
+			remoteInfo = HealthyWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		82B9E5B7269E22B000ED8FC3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				82B9E5B6269E22B000ED8FC3 /* HealthyWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		822DCCFB269DEDA300657B77 /* PedometerManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerManagerStore.swift; sourceTree = "<group>"; };
+		82B9E5A9269E22AE00ED8FC3 /* HealthyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HealthyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B9E5AA269E22AE00ED8FC3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		82B9E5AC269E22AE00ED8FC3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		82B9E5AF269E22AE00ED8FC3 /* HealthyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthyWidget.swift; sourceTree = "<group>"; };
+		82B9E5B1269E22B000ED8FC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82B9E5B3269E22B000ED8FC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82B9E5BD269E249E00ED8FC3 /* HealthyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthyWidgetExtension.entitlements; sourceTree = "<group>"; };
+		82B9E5C0269E281A00ED8FC3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		82CE9B99269DA1F20079F5AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		82CE9BA8269DAAD50079F5AE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		82CE9BAC269DAB010079F5AE /* FormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowView.swift; sourceTree = "<group>"; };
@@ -40,6 +79,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		82B9E5A6269E22AE00ED8FC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82B9E5AD269E22AE00ED8FC3 /* SwiftUI.framework in Frameworks */,
+				82B9E5AB269E22AE00ED8FC3 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82E9061E269A30670046388E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,10 +99,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82B9E5AE269E22AE00ED8FC3 /* HealthyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				82B9E5AF269E22AE00ED8FC3 /* HealthyWidget.swift */,
+				82B9E5B1269E22B000ED8FC3 /* Assets.xcassets */,
+				82B9E5B3269E22B000ED8FC3 /* Info.plist */,
+			);
+			path = HealthyWidget;
+			sourceTree = "<group>";
+		};
 		82E90618269A30670046388E = {
 			isa = PBXGroup;
 			children = (
+				82B9E5BD269E249E00ED8FC3 /* HealthyWidgetExtension.entitlements */,
 				82E90623269A30670046388E /* Healthy */,
+				82B9E5AE269E22AE00ED8FC3 /* HealthyWidget */,
 				82E90622269A30670046388E /* Products */,
 				82E90638269A33CD0046388E /* Frameworks */,
 			);
@@ -64,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				82E90621269A30670046388E /* Healthy.app */,
+				82B9E5A9269E22AE00ED8FC3 /* HealthyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +134,7 @@
 			children = (
 				82E90637269A33CD0046388E /* Healthy.entitlements */,
 				82E90624269A30670046388E /* HealthyApp.swift */,
+				82B9E5C0269E281A00ED8FC3 /* Constants.swift */,
 				82E90644269A396E0046388E /* Views */,
 				82E90642269A39670046388E /* Managers */,
 				82E9063E269A39580046388E /* Models */,
@@ -95,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				82E90639269A33CD0046388E /* HealthKit.framework */,
+				82B9E5AA269E22AE00ED8FC3 /* WidgetKit.framework */,
+				82B9E5AC269E22AE00ED8FC3 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,6 +195,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		82B9E5A8269E22AE00ED8FC3 /* HealthyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82B9E5BA269E22B000ED8FC3 /* Build configuration list for PBXNativeTarget "HealthyWidgetExtension" */;
+			buildPhases = (
+				82B9E5A5269E22AE00ED8FC3 /* Sources */,
+				82B9E5A6269E22AE00ED8FC3 /* Frameworks */,
+				82B9E5A7269E22AE00ED8FC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthyWidgetExtension;
+			productName = HealthyWidgetExtension;
+			productReference = 82B9E5A9269E22AE00ED8FC3 /* HealthyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		82E90620269A30670046388E /* Healthy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82E90630269A30690046388E /* Build configuration list for PBXNativeTarget "Healthy" */;
@@ -138,10 +219,12 @@
 				82E9061D269A30670046388E /* Sources */,
 				82E9061E269A30670046388E /* Frameworks */,
 				82E9061F269A30670046388E /* Resources */,
+				82B9E5B7269E22B000ED8FC3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				82B9E5B5269E22B000ED8FC3 /* PBXTargetDependency */,
 			);
 			name = Healthy;
 			productName = Healthy;
@@ -157,6 +240,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					82B9E5A8269E22AE00ED8FC3 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					82E90620269A30670046388E = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -176,11 +262,20 @@
 			projectRoot = "";
 			targets = (
 				82E90620269A30670046388E /* Healthy */,
+				82B9E5A8269E22AE00ED8FC3 /* HealthyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		82B9E5A7269E22AE00ED8FC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82B9E5B2269E22B000ED8FC3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82E9061F269A30670046388E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +288,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		82B9E5A5269E22AE00ED8FC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82B9E5B0269E22AE00ED8FC3 /* HealthyWidget.swift in Sources */,
+				82B9E5C4269E283100ED8FC3 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82E9061D269A30670046388E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +306,7 @@
 				822DCCFC269DEDA300657B77 /* PedometerManagerStore.swift in Sources */,
 				82CE9B9A269DA1F20079F5AE /* ProfileView.swift in Sources */,
 				82CE9BB0269DAD6B0079F5AE /* Extensions.swift in Sources */,
+				82B9E5C1269E281A00ED8FC3 /* Constants.swift in Sources */,
 				82CE9BA9269DAAD50079F5AE /* Profile.swift in Sources */,
 				82E90635269A30970046388E /* HealthManagerStore.swift in Sources */,
 				82CE9BAD269DAB010079F5AE /* FormRowView.swift in Sources */,
@@ -211,7 +316,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		82B9E5B5269E22B000ED8FC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82B9E5A8269E22AE00ED8FC3 /* HealthyWidgetExtension */;
+			targetProxy = 82B9E5B4269E22B000ED8FC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		82B9E5B8269E22B000ED8FC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HealthyWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9C9R36NYWY;
+				INFOPLIST_FILE = HealthyWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cedo.commonworldinc.Healthy.HealthyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		82B9E5B9269E22B000ED8FC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HealthyWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9C9R36NYWY;
+				INFOPLIST_FILE = HealthyWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cedo.commonworldinc.Healthy.HealthyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		82E9062E269A30690046388E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -331,6 +490,7 @@
 		82E90631269A30690046388E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Healthy/Healthy.entitlements;
@@ -356,6 +516,7 @@
 		82E90632269A30690046388E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Healthy/Healthy.entitlements;
@@ -381,6 +542,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		82B9E5BA269E22B000ED8FC3 /* Build configuration list for PBXNativeTarget "HealthyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82B9E5B8269E22B000ED8FC3 /* Debug */,
+				82B9E5B9269E22B000ED8FC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		82E9061C269A30670046388E /* Build configuration list for PBXProject "Healthy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
