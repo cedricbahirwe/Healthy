@@ -10,7 +10,7 @@ import HealthKit
 
 struct ProfileView: View {
     var healthStore: HealthStore?
-    
+    @State private var profile: Profile?
     @State private var weight: String = ""
     var body: some View {
         Form {
@@ -46,24 +46,6 @@ struct ProfileView_Previews: PreviewProvider {
         NavigationView {
             ProfileView()
 //                .preferredColorScheme(.dark)
-        }
-    }
-}
-
-struct FormRowView: View {
-    let title: String
-    @Binding var text: String
-    
-    init(_ title: String, text: Binding<String>) {
-        self.title = title
-        _text = text
-    }
-    
-    var body: some View {
-        HStack {
-            Text("\(title):")
-            
-            TextField(title, text: $text)
         }
     }
 }
