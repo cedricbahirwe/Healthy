@@ -14,8 +14,6 @@ struct ContentView: View {
     
     @State private var steps: [Step] = []
     
-    @State private var age: Int? = nil
-    @State private var bloodType: HKBloodTypeObject? = nil
     
     init() {
         healthStore = HealthStore()
@@ -26,10 +24,13 @@ struct ContentView: View {
             List {
                 ForEach(steps, content: StepRowView.init)
             }
-            .actionSheet(isPresented: $showInfoSheet) {
-                ActionSheet(title: Text("User Information"),
-                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
-                            buttons: [.cancel()])
+//            .actionSheet(isPresented: $showInfoSheet) {
+//                ActionSheet(title: Text("User Information"),
+//                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
+//                            buttons: [.cancel()])
+//            }
+            .sheet(isPresented: $showInfoSheet) {
+                ProfileView(healthStore: healthStore)
             }
             .onAppear(perform: initilization)
             .navigationTitle("Montly Steps")
@@ -53,11 +54,6 @@ struct ContentView: View {
                     healthStore.calculateSteps { statisticsCollection in
                         if let statisticsCollection = statisticsCollection {
                             updateFromStatistics(statisticsCollection)
-                            
-                            (age, bloodType) = healthStore.getInfo()
-                            let (age, bloodType) = healthStore.getInfo()
-                            print("The age is \(age)")
-                            print("The blood type is \(bloodType!.bloodType)")
                         }
                     }
                 }

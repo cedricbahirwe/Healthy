@@ -5,7 +5,6 @@
 //  Created by Cédric Bahirwe on 10/07/2021.
 //
 
-import Foundation
 import HealthKit
 
 class HealthStore {
@@ -14,10 +13,7 @@ class HealthStore {
     // accessing data, accessing and writing number of steps, etc
     var healthStore: HKHealthStore?
     
-    
     var hkquery: HKStatisticsCollectionQuery?
-    
-    
     
     init() {
         // Check whether HealthKit is available on this device.
@@ -25,9 +21,6 @@ class HealthStore {
             healthStore = HKHealthStore()
         }
     }
-    
-    
-    
     func requestAuthorization(completion: @escaping (Bool) -> Void) {
         
         // Types of data, we're requesting from HealthKit
@@ -37,10 +30,13 @@ class HealthStore {
         let dob = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
         // The blood type
         let bloodType = HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!
+        // The body mass
+        let bodyMass = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
         
         
-        let hkTypesToRead: Set<HKObjectType> = [stepType, dob, bloodType]
-        let hkTypesToWrite: Set<HKSampleType> = []
+        
+        let hkTypesToRead: Set<HKObjectType> = [stepType, dob, bloodType, bodyMass]
+        let hkTypesToWrite: Set<HKSampleType> = [bodyMass]
         
         guard let healthStore = healthStore else { return completion(false) }
         
@@ -63,7 +59,7 @@ class HealthStore {
         // 30 days before the current day
         let startDate = Calendar.current.date(byAdding: .day, value: -30, to: Date())
         
-        // anchor date ( Which Time?)
+        // anchor date (Which Time?)
         let anchorDate = Date.mondayAt12AM()
         
         // We want the steps to be calculated daily
@@ -96,6 +92,7 @@ class HealthStore {
     
     /// Get Infor from HealthKit
     /// - Returns: the age and bloodType of the user
+    
     func getInfo() -> (age: Int?, bloodType: HKBloodTypeObject?) {
         var age: Int?
         var blootype: HKBloodTypeObject?
@@ -111,29 +108,53 @@ class HealthStore {
         
         return (age, blootype)
     }
-}
-
-extension Date {
-    static func mondayAt12AM() -> Date {
-        Calendar(identifier: .iso8601)
-            .date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
+    
+    
+    
+    /// Save a given weight to HealthKit
+    /// - Parameters:
+    ///   - weight: the weight to be saved in `grams`
+    ///   - completion: a closure that indicates whether the saving operation was successul
+    func saveBodyMass(weight: Double, completion: @escaping(Bool) -> Void) {
+        
+        let today = Date()
+        
+        if let type = HKSampleType.quantityType(forIdentifier: .bodyMass) {
+            let quantity = HKQuantity(unit: .gram(), doubleValue: weight)
+            
+            let sample = HKQuantitySample(type: type,
+                                          quantity: quantity,
+                                          start: today,
+                                          end: today)
+            
+            healthStore?.save(sample, withCompletion: { (success, error) in
+                completion(success)
+            })
+        }
     }
-}
-
-
-extension HealthKit.HKBloodTypeObject {
-    // Convert a HKBloodType to a human readable format
-    public func readableBloodType() -> String {
-        switch self.bloodType {
-        case .aPositive: return "A+"
-        case .aNegative: return "A-"
-        case .bPositive: return "B+"
-        case .bNegative: return "B-"
-        case .abPositive: return "AB+"
-        case .abNegative: return "AB-"
-        case .oPositive: return "O+"
-        case .oNegative: return "O-"
-        default: return "Unknown"
+    
+    
+    func getBodyMass(completion: @escaping(String) -> Void) {
+        print("up")
+        var weight: String = ""
+        let weightType = HKSampleType.quantityType(forIdentifier: .bodyMass)!
+        let query = HKSampleQuery(sampleType: weightType,
+                                  predicate: nil,
+                                  limit: HKObjectQueryNoLimit,
+                                  sortDescriptors: nil) { (query, results, error) in
+            if let result = results?.last as? HKQuantitySample {
+                print("weight -> \(result.quantity)")
+                DispatchQueue.main.async {
+                    weight = "\(result.quantity)"
+                    completion(weight)
+                }
+            } else {
+                print("We could not retrieve the result \nResults => \(String(describing: results)), error => \(String(describing: error)))")
+            }
+        }
+        
+        if let healthStore = healthStore {
+            healthStore.execute(query)
         }
     }
 }
