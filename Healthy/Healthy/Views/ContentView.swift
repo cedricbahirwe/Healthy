@@ -24,11 +24,8 @@ struct ContentView: View {
             List {
                 ForEach(steps, content: StepRowView.init)
             }
-//            .actionSheet(isPresented: $showInfoSheet) {
-//                ActionSheet(title: Text("User Information"),
-//                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
-//                            buttons: [.cancel()])
-//            }
+            .listStyle(InsetGroupedListStyle()
+            )
             .sheet(isPresented: $showInfoSheet) {
                 ProfileView(healthStore: healthStore)
             }
@@ -75,6 +72,7 @@ struct ContentView: View {
         }
         // To Sort them elements from the latest
         steps.reverse()
+        steps.removeFirst()
         
     }
 }
