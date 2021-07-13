@@ -135,7 +135,6 @@ class HealthStore {
     
     
     func getBodyMass(completion: @escaping(String) -> Void) {
-        print("up")
         var weight: String = ""
         let weightType = HKSampleType.quantityType(forIdentifier: .bodyMass)!
         let query = HKSampleQuery(sampleType: weightType,
@@ -143,7 +142,6 @@ class HealthStore {
                                   limit: HKObjectQueryNoLimit,
                                   sortDescriptors: nil) { (query, results, error) in
             if let result = results?.last as? HKQuantitySample {
-                print("weight -> \(result.quantity)")
                 DispatchQueue.main.async {
                     weight = "\(result.quantity)"
                     completion(weight)

@@ -11,7 +11,7 @@ import SwiftUI
 struct HealthyApp: App {
     var body: some Scene {
         WindowGroup {
-            PedoMeterView()
+            ContentView()
         }
     }
 }

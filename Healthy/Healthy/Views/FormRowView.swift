@@ -24,6 +24,7 @@ struct FormRowView: View {
             Text("\(title):")
             
             TextField(title, text: $text)
+                .font(Font.body.weight(.semibold))
         }
     }
 }
