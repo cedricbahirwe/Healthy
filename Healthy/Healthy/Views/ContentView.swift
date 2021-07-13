@@ -10,8 +10,7 @@ import HealthKit
 
 struct ContentView: View {
     private var healthStore: HealthStore?
-    @State private var showInfoSheet: Bool = false
-    
+    @State private var showProfileSheet: Bool = false
     @State private var steps: [Step] = []
     
     
@@ -21,15 +20,9 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            List {
-                ForEach(steps, content: StepRowView.init)
-            }
-//            .actionSheet(isPresented: $showInfoSheet) {
-//                ActionSheet(title: Text("User Information"),
-//                            message: Text("You're \(age!) years old.\nYour blood type is \(bloodType!.readableBloodType())"),
-//                            buttons: [.cancel()])
-//            }
-            .sheet(isPresented: $showInfoSheet) {
+            List(steps, rowContent: StepRowView.init)
+            .listStyle(InsetGroupedListStyle())
+            .sheet(isPresented: $showProfileSheet) {
                 ProfileView(healthStore: healthStore)
             }
             .onAppear(perform: initilization)
@@ -37,7 +30,7 @@ struct ContentView: View {
             .toolbar(content: {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Button(action: {
-                        showInfoSheet.toggle()
+                        showProfileSheet.toggle()
                     }, label: {
                         Label("Profile", systemImage: "person.circle.fill")
                     })
@@ -75,6 +68,7 @@ struct ContentView: View {
         }
         // To Sort them elements from the latest
         steps.reverse()
+        steps.removeFirst()
         
     }
 }
