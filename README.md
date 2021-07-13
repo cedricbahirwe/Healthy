@@ -8,4 +8,4 @@ An exploration of HealthKit framework
 
 Home View                 |  Profile View
 :-------------------------:|:-------------------------:
-![](home.png)  |  ![](profile.png)
+![](home.PNG)  |  ![](profile.png)
