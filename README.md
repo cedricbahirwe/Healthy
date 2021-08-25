@@ -1,5 +1,5 @@
 # Healthy
-An exploration of HealthKit framework
+A small exploration of HealthKit framework
 
 
 ### Tech & Tools:
