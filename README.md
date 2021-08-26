@@ -11,7 +11,7 @@ A small exploration of HealthKit framework
 
 ## TakeAways 🚀
 
-- **Understand Widgets and their importance**
+- **Understand the use and importance of Widgets**
 - **Understand how HealthKit works and when/how to use it**
 
 ## Special Thanks to:
