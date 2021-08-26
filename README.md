@@ -16,7 +16,6 @@ A small exploration of HealthKit framework
 
 ## Special Thanks to:
 
-1. [Esther Carelle](https://github.com/esthcarelle) for her wonderful feedback✨.
 
 ### Features:
 
